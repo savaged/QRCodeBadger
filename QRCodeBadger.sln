@@ -1,0 +1,28 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRCodeBadger.Core", "QRCodeBadger.Core\QRCodeBadger.Core.csproj", "{F97739F1-48CE-4BC5-AE96-BA3347D904DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRCodeBadger.ConsoleApp", "QRCodeBadger.ConsoleApp\QRCodeBadger.ConsoleApp.csproj", "{FDC8CE1A-CD3A-42CB-BC5F-BA26DC832CCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F97739F1-48CE-4BC5-AE96-BA3347D904DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97739F1-48CE-4BC5-AE96-BA3347D904DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97739F1-48CE-4BC5-AE96-BA3347D904DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97739F1-48CE-4BC5-AE96-BA3347D904DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDC8CE1A-CD3A-42CB-BC5F-BA26DC832CCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC8CE1A-CD3A-42CB-BC5F-BA26DC832CCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC8CE1A-CD3A-42CB-BC5F-BA26DC832CCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC8CE1A-CD3A-42CB-BC5F-BA26DC832CCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
