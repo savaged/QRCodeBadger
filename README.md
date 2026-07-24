@@ -22,10 +22,10 @@ to `QRCodeBadger.Core.csproj`, the same way `ConsoleApp` does.
 First worksheet (or the CSV itself), header row in row 1, Name in column A
 and UUID in column B:
 
-| Name          | UUID                                 |
-|---------------|---------------------------------------|
-| Jane Smith    | 3fa85f64-5717-4562-b3fc-2c963f66afa6  |
-| John Doe      | 9c858901-8a57-4791-81fe-4c455b099bc9  |
+| Name       | UUID                                 |
+|------------|--------------------------------------|
+| Jane Smith | 3fa85f64-5717-4562-b3fc-2c963f66afa6 |
+| John Doe   | 9c858901-8a57-4791-81fe-4c455b099bc9 |
 
 A CSV version of the same would be:
 
