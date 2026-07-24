@@ -54,7 +54,9 @@ public sealed class LabelSheetBuilder : ILabelSheetBuilder
 
                         foreach (var volunteer in pageVolunteers)
                         {
-                            table.Cell().Element(cell => ComposeLabel(cell, volunteer));
+                            table.Cell()
+                                .Element(StyleCell)
+                                .Column(column => PopulateLabel(column, volunteer));
                         }
                     });
                 });
@@ -63,26 +65,32 @@ public sealed class LabelSheetBuilder : ILabelSheetBuilder
         .GeneratePdf(outputPdfPath);
     }
 
-    private IContainer ComposeLabel(IContainer container, Volunteer volunteer)
+    // Styling only - Element() needs a Func<IContainer, IContainer>, so this
+    // must stop short of any terminal content call (Text/Image/Column etc.),
+    // which all return void rather than IContainer.
+    private IContainer StyleCell(IContainer container)
     {
         return container
             .Height((float)_options.LabelHeightMm, Unit.Millimetre)
-            .Padding(2)
-            .Column(column =>
-            {
-                column.Item()
-                    .Height((float)(_options.LabelHeightMm - _options.QrSizeMm), Unit.Millimetre)
-                    .AlignCenter()
-                    .AlignMiddle()
-                    .Text(volunteer.Name)
-                    .FontSize((float)_options.NameFontSize)
-                    .SemiBold();
+            .Padding(2);
+    }
 
-                column.Item()
-                    .AlignCenter()
-                    .Width((float)_options.QrSizeMm, Unit.Millimetre)
-                    .Height((float)_options.QrSizeMm, Unit.Millimetre)
-                    .Image(_qrCodeGenerator.GeneratePng(volunteer.Uuid));
-            });
+    // Content population - Column() is terminal (void), so this is a
+    // separate method chained on *after* Element(StyleCell) above.
+    private void PopulateLabel(ColumnDescriptor column, Volunteer volunteer)
+    {
+        column.Item()
+            .Height((float)(_options.LabelHeightMm - _options.QrSizeMm), Unit.Millimetre)
+            .AlignCenter()
+            .AlignMiddle()
+            .Text(volunteer.Name)
+            .FontSize((float)_options.NameFontSize)
+            .SemiBold();
+
+        column.Item()
+            .AlignCenter()
+            .Width((float)_options.QrSizeMm, Unit.Millimetre)
+            .Height((float)_options.QrSizeMm, Unit.Millimetre)
+            .Image(_qrCodeGenerator.GeneratePng(volunteer.Uuid));
     }
 }
