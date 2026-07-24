@@ -21,6 +21,6 @@ public sealed class LabelSheetOptions
     public int Columns { get; init; } = 3;
     public int Rows { get; init; } = 7;
 
-    public double QrSizeMm { get; init; } = 20;
+    public double QrSizeMm { get; init; } = 16;
     public double NameFontSize { get; init; } = 11;
 }

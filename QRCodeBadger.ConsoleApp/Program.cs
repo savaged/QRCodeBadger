@@ -31,8 +31,8 @@ catch (NotSupportedException ex)
 
 IQrCodeGenerator qrCodeGenerator = new QrCodeGenerator();
 
-// Adjust these to match your physical label sheet.
-var options = new LabelSheetOptions
+var options = new LabelSheetOptions();
+/* Adjust these to match your physical label sheet.
 {
     Columns = 3,
     Rows = 7,
@@ -45,6 +45,7 @@ var options = new LabelSheetOptions
     QrSizeMm = 20,
     NameFontSize = 11
 };
+*/
 
 ILabelSheetBuilder builder = new LabelSheetBuilder(options, qrCodeGenerator);
 
