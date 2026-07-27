@@ -69,3 +69,14 @@ all in millimetres. If you're using a specific label product, search
 - QR error correction level is set to Medium (15% recoverable) - fine for
   printed labels scanned at close range. Bump to `ECCLevel.H` in
   `QrCodeGenerator.cs` if labels will get scuffed/handled a lot.
+
+## Usage
+
+The application takes two parameters, the input CSV file and the expected output PDF file.
+
+The file must have a column named 'Name', with the volunteer's full-name, and a column named 'UUID'.
+
+The input must be checked for any conversion, of the '-' character, especially within the UUID data.
+    E.g. '+AC0-'
+
+

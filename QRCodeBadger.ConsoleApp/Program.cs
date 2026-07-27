@@ -31,21 +31,19 @@ catch (NotSupportedException ex)
 
 IQrCodeGenerator qrCodeGenerator = new QrCodeGenerator();
 
-var options = new LabelSheetOptions();
-/* Adjust these to match your physical label sheet.
+var options = new LabelSheetOptions
 {
-    Columns = 3,
-    Rows = 7,
-    LabelWidthMm = 63.5,
-    LabelHeightMm = 38.1,
-    MarginLeftMm = 6.5,
-    MarginTopMm = 15.0,
-    MarginRightMm = 6.5,
-    MarginBottomMm = 15.0,
-    QrSizeMm = 20,
-    NameFontSize = 11
+    Columns = 6,
+    Rows = 10,
+    LabelWidthMm = 30,
+    LabelHeightMm = 25,
+    MarginLeftMm = 15,
+    MarginTopMm = 16,
+    MarginRightMm = 15,
+    MarginBottomMm = 16.4,
+    QrSizeMm = 15,
+    NameFontSize = 6
 };
-*/
 
 ILabelSheetBuilder builder = new LabelSheetBuilder(options, qrCodeGenerator);
 
