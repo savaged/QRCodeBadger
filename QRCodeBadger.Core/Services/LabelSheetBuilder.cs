@@ -71,16 +71,15 @@ public sealed class LabelSheetBuilder : ILabelSheetBuilder
     private void PopulateLabel(ColumnDescriptor column, Volunteer volunteer)
     {
         column.Item()
-            .AlignCenter()
-            .Text(volunteer.Name)
-            .FontSize((float)_options.NameFontSize)
-            .SemiBold();
-
-        column.Item()
             .PaddingTop(2)
             .AlignCenter()
             .Width((float)_options.QrSizeMm, Unit.Millimetre)
             .Height((float)_options.QrSizeMm, Unit.Millimetre)
             .Image(_qrCodeGenerator.GeneratePng(volunteer.Uuid));
+        column.Item()
+            .AlignCenter()
+            .Text(volunteer.Name)
+            .FontSize((float)_options.NameFontSize)
+            .SemiBold();
     }
 }
