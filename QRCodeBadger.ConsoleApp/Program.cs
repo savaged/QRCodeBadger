@@ -31,6 +31,7 @@ catch (NotSupportedException ex)
 
 IQrCodeGenerator qrCodeGenerator = new QrCodeGenerator();
 
+/*tiny codes for large teams
 var options = new LabelSheetOptions
 {
     Columns = 6,
@@ -43,6 +44,21 @@ var options = new LabelSheetOptions
     MarginBottomMm = 16.4,
     QrSizeMm = 15,
     NameFontSize = 6
+};
+*/
+// A4-24
+var options = new LabelSheetOptions
+{
+    Columns = 3,
+    Rows = 8,
+    LabelWidthMm = 70,
+    LabelHeightMm = 36.5,
+    MarginLeftMm = 0,
+    MarginTopMm = 4,
+    MarginRightMm = 0,
+    MarginBottomMm = 2,
+    QrSizeMm = 26,
+    NameFontSize = 8
 };
 
 ILabelSheetBuilder builder = new LabelSheetBuilder(options, qrCodeGenerator);

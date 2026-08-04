@@ -79,4 +79,7 @@ The file must have a column named 'Name', with the volunteer's full-name, and a 
 The input must be checked for any conversion, of the '-' character, especially within the UUID data.
     E.g. '+AC0-'
 
+## TODO
+
+* Allow options for formats from input
 
