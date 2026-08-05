@@ -3,14 +3,18 @@ using QRCodeBadger.Services;
 
 if (args.Length < 1)
 {
-    Console.WriteLine("Usage: QRCodeBadger <input.xlsx|input.csv> [output.pdf]");
+    Console.WriteLine("Usage: QRCodeBadger <input.xlsx|input.csv> [output.pdf] [layout number]");
     Console.WriteLine("  input file  - .xlsx or .csv with Name (col A) and UUID (col B), header row 1");
     Console.WriteLine("  output.pdf  - defaults to labels.pdf in the current folder");
+    Console.WriteLine("  layout # - defaults to option 1, A4-60 (i.e. 6 columns by 10 rows). Option 2 is A4-24.");
     return 1;
 }
 
 var inputPath = args[0];
 var outputPath = args.Length > 1 ? args[1] : "labels.pdf";
+var layoutOption = 0;
+if (args.Length > 2 && int.TryParse(args[2], out int i) && i == 2)
+    layoutOption = 1;
 
 if (!File.Exists(inputPath))
 {
@@ -31,8 +35,7 @@ catch (NotSupportedException ex)
 
 IQrCodeGenerator qrCodeGenerator = new QrCodeGenerator();
 
-// tiny codes for large teams
-var options = new LabelSheetOptions
+var a4_60 = new LabelSheetOptions
 {
     Columns = 6,
     Rows = 10,
@@ -45,9 +48,7 @@ var options = new LabelSheetOptions
     QrSizeMm = 15,
     NameFontSize = 6
 };
-/*
-// A4-24
-var options = new LabelSheetOptions
+var a4_24 = new LabelSheetOptions
 {
     Columns = 3,
     Rows = 8,
@@ -60,9 +61,9 @@ var options = new LabelSheetOptions
     QrSizeMm = 26,
     NameFontSize = 8
 };
-*/
+var options = new List<LabelSheetOptions> { a4_60, a4_24 };
 
-ILabelSheetBuilder builder = new LabelSheetBuilder(options, qrCodeGenerator);
+ILabelSheetBuilder builder = new LabelSheetBuilder(options[layoutOption], qrCodeGenerator);
 
 var volunteers = reader.ReadVolunteers(inputPath);
 
